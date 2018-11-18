@@ -1,10 +1,15 @@
 {
   "name": "emaily-app-client",
   "version": "0.1.0",
+  "description": "Emaily App Client",
   "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/HugoVP/emaily-app-client.git"
+  },
+  "engines": {
+    "node": "10.11.0",
+    "npm": "6.4.1"
   },
   "dependencies": {
     "react": "^16.6.3",
