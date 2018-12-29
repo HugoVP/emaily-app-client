@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Payments from './Payments';
+
 class Header extends Component {
   renderContent() {
     switch (this.props.auth) {
@@ -9,10 +11,27 @@ class Header extends Component {
         return;
 
       case false:
-        return <a href="/auth/google">Login With Google</a>;
+        return (
+          <li>
+            <a href="/auth/google">Login With Google</a>
+          </li>
+        );
 
       default:
-        return <a href="/api/logout">Logout</a>;
+        return [
+          <li key="1">
+            <Payments />
+          </li>,
+          <li key="2" style={{ margin: '0 10px' }}>
+            Credits: {this.props.auth.credits || 0}
+          </li>,
+          <li key="3">
+            <a href="/api/logout">Logout</a>
+          </li>,
+          <li key="4">
+            {process.env.NODE_ENV} \ {process.env.REACT_APP_STRIPE_KEY}
+          </li>,
+        ];
     }
   }
 
@@ -26,9 +45,7 @@ class Header extends Component {
           >
             Emaily
           </Link>
-          <ul className="right">
-            <li>{this.renderContent()}</li>
-          </ul>
+          <ul className="right">{this.renderContent()}</ul>
         </div>
       </nav>
     );
