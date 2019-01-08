@@ -28,9 +28,6 @@ class Header extends Component {
           <li key="3">
             <a href="/api/logout">Logout</a>
           </li>,
-          <li key="4">
-            {process.env.NODE_ENV} \ {process.env.REACT_APP_STRIPE_KEY}
-          </li>,
         ];
     }
   }

@@ -18,9 +18,9 @@ FROM nginxinc/nginx-unprivileged:alpine
 WORKDIR /app
 
 COPY --from=0 --chown=nginx:nginx /app/build /usr/share/nginx/html
-
 COPY --chown=nginx:nginx nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --chown=nginx:nginx command.sh .env.example ./
+COPY --chown=nginx:nginx command.sh .
+COPY .env.example .env.production
 
 RUN chmod +x command.sh
 
